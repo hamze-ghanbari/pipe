@@ -15,7 +15,7 @@ export class SadeghiPipe implements PipeTransform {
     let result : DateModel = new DateModel();
     result.date = this.jalaliDate.transform(date);
     result.time = this.jalaliTime.transform(date);
-    result.isToday = this.isToday(date) ? true : false;
+    result.isToday = this.isToday(date);
     return result;
   }
 }
