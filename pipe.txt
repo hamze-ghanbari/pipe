@@ -21,7 +21,7 @@ class DateModel{
   date : string;
   isToday : boolean = false;
   
-  constructor(time : string, date : string, isTody : boolean){
+  constructor(time : string, date : string, isToday : boolean){
   this.time = time;
   this.date = date;
   this.isToday = isToday;
