@@ -12,11 +12,7 @@ export class SadeghiPipe implements PipeTransform {
 
 
   transform(date: string): DateModel {
-    let result : DateModel = new DateModel();
-    result.date = this.jalaliDate.transform(date);
-    result.time = this.jalaliTime.transform(date);
-    result.isToday = this.isToday(date);
-    return result;
+    return new DateModel(this.jalaliTime.transform(date), this.jalaliDate.transform(date), this.isToday(date));
   }
 }
 
@@ -24,4 +20,10 @@ class DateModel{
   time : string;
   date : string;
   isToday : boolean = false;
+  
+  constructor(time : string, date : string, isTody : boolean){
+  this.time = time;
+  this.date = date;
+  this.isToday = isToday;
+  }
 }
