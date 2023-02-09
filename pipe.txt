@@ -1,0 +1,27 @@
+
+@Pipe({ name: 'sadeghi' })
+export class SadeghiPipe implements PipeTransform {
+  private jalaliDate: JalaliPipe = new JalaliPipe();
+  private jalaliTime: JalaliTimePipeWithoutSecoundPipe = new JalaliTimePipeWithoutSecoundPipe();
+
+    isToday(dateParameter) {
+    var today = new Date();
+    var date = new Date(dateParameter);
+    return date.getDate() === today.getDate() && date.getMonth() === today.getMonth() && date.getFullYear() === today.getFullYear();
+  }
+
+
+  transform(date: string): DateModel {
+    let result : DateModel = new DateModel();
+    result.date = this.jalaliDate.transform(date);
+    result.time = this.jalaliTime.transform(date);
+    result.isToday = this.isToday(date) ? true : false;
+    return result;
+  }
+}
+
+class DateModel{
+  time : string;
+  date : string;
+  isToday : boolean = false;
+}
