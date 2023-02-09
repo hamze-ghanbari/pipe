@@ -1,0 +1,2 @@
+  let userAgent = navigator.userAgent || navigator.vendor;
+                this.isMobile_and_Tablet = /android/i.test(userAgent) || /iPhone|ipad|iPod/i.test(userAgent);
